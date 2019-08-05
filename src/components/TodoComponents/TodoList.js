@@ -3,12 +3,12 @@
 import React from 'react';
 import Todo from './Todo';
 
-function TodoList({ list }) {
+function TodoList({ list, toggleCompleted }) {
 
   return (
-    <div style={{paddingBottom: '30px'}}>
+    <div style={{paddingBottom: '30px', fontSize: '18px'}}>
       {list.map((todo, index) => {
-        return <Todo key= {index} todo={todo}/>
+        return <Todo key= {index} todo={todo} toggleCompleted={toggleCompleted}/>
       })}
     </div>
   )

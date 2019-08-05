@@ -1,4 +1,6 @@
 import React from 'react';
+import { Form } from 'semantic-ui-react';
+import './Todo.css';
 
 class TodoForm extends React.Component {
   constructor(props) {
@@ -18,7 +20,7 @@ class TodoForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={(e) => {
+      <Form onSubmit={(e) => {
         this.props.addTodo(e, this.state)
         this.setState({
           task: '',
@@ -26,17 +28,19 @@ class TodoForm extends React.Component {
           completed: false
         })
         }}>
-        <input 
-        type="text" 
-        name="task"
-        value={this.state.task}
-        placeholder="...todo" 
-        onChange={this.handleChange}
-        />
+        <Form.Group style={{margin: '0'}}>
+          <Form.Input style={{fontSize: '16px'}}
+          type="text" 
+          name="task"
+          value={this.state.task}
+          placeholder="...todo" 
+          onChange={this.handleChange}
+          />
 
-        <input type="submit" value="Add todo"/>
-        <button  >Clear Completed</button>
-      </form>
+          <Form.Button style={{fontSize: '16px', background: '#667f63', color: 'white'}} type="submit" content="Add todo"/>
+          <Form.Button style={{fontSize: '16px'}} onClick={this.props.clearCompleted} >Clear Completed</Form.Button>
+        </Form.Group>
+      </Form>
     )
   }
 }
